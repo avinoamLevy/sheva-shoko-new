@@ -1,0 +1,796 @@
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c2416;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+/* LAYOUT & HEADER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    width: 100%;
+}
+
+.logo {
+    flex: 0 0 auto;
+}
+
+.logo-img {
+    height: 110px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* HAMBURGER BUTTON (כפתור תפריט המבורגר לנייד) */
+.menu-toggle {
+    display: none;
+    /* מוסתר במסכים גדולים */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    margin-right: auto;
+    /* דוחף אותו שמאלה באתרי RTL */
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #3d2817;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* אפקט הפיכה ל-X כשהתפריט פתוח */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin-right: 3rem;
+    margin-left: auto;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #2c2416;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #d4a574;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d4a574;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* USER GREETING & LOGOUT */
+.user-greeting {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    color: #2c2416;
+    font-weight: 600;
+}
+
+.user-greeting .logout-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    background-color: #6f4f28;
+    color: #ffffff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.user-greeting .logout-btn:hover {
+    background-color: #d4a574;
+    color: #2c2416;
+}
+
+/* HERO SECTION */
+.hero {
+    margin-top: 80px;
+    background: linear-gradient(135deg, #3d2817 0%, #6f4f28 100%);
+    color: #ffffff;
+    padding: 4rem 2rem;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    animation: fadeInUp 0.8s ease;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-family: Georgia, serif;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.hero-tagline {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+/* BUTTONS & SECTIONS */
+.btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #d4a574;
+    color: #2c2416;
+}
+
+.btn-primary:hover {
+    background-color: #c99560;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* כותרות ראשיות עם עיצוב הפס החום הדק */
+.section-title,
+.category-title {
+    font-family: Georgia, serif;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #3d2817;
+    margin-bottom: 3rem;
+}
+
+.category-title {
+    font-size: 2rem;
+    color: #6f4f28;
+    margin-bottom: 3rem;
+}
+
+/* יצירת הפס החום הממורכז - עודכן לפי 3 מגודל הכותרת */
+.section-title::after,
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3em;
+    height: 2px;
+    background-color: #6f4f28;
+}
+
+/* MENU SECTION */
+.menu,
+.about,
+.contact,
+.reviews {
+    background-color: #ffffff;
+    padding: 4rem 0;
+}
+
+.menu-category {
+    margin-bottom: 4rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.menu-item {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-right: none;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: #fafaf8;
+}
+
+.item-name {
+    font-size: 1.3rem;
+    color: #3d2817;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.item-description {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    min-height: 45px;
+}
+
+.item-price {
+    font-size: 1.25rem;
+    color: #d4a574;
+    font-weight: 700;
+}
+
+/* ABOUT SECTION */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    color: #2c2416;
+}
+
+/* CONTACT & REVIEWS WORKSPACE */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.contact-info h3,
+.contact-form h3 {
+    font-size: 1.4rem;
+    color: #3d2817;
+    margin: 1.5rem 0;
+}
+
+.contact-info h3:first-child,
+.contact-form h3:first-child {
+    margin-top: 0;
+}
+
+.hours-list {
+    list-style: none;
+    margin-bottom: 3rem;
+}
+
+.hours-list li,
+.contact-details p {
+    padding: 0.6rem 0;
+    font-size: 1rem;
+}
+
+.contact-details a {
+    color: #6f4f28;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: #d4a574;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    direction: ltr;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: #6f4f28;
+    color: #ffffff;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.social-icon:hover {
+    background-color: #d4a574;
+    color: #2c2416;
+    transform: translateY(-3px);
+}
+
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    object-fit: contain;
+}
+
+/* טופס ביקורות מוקטן ומעוצב */
+.contact-form {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    max-width: 360px;
+    width: 100%;
+    height: fit-content;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.rating-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea,
+.login-box input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-align: right;
+}
+
+/* מרווח קבוע ויציב בין השורות בדף ההתחברות (שם משתמש וסיסמה) */
+.login-box input {
+    margin-bottom: 1.2rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.login-box input:focus {
+    outline: none;
+    border-color: #d4a574;
+    box-shadow: 0 0 5px rgba(212, 165, 116, 0.3);
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.btn-sm {
+    padding: 0.6rem 2rem;
+    font-size: 0.95rem;
+}
+
+/* מערכת כוכבים אינטראקטיבית חדשה לאזור כתיבת הביקורת בטופס */
+.star-rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    /* מאפשר תמיכה מלאה בסימון כוכבים מימין לשמאל */
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.star-item {
+    font-size: 2rem;
+    color: #ddd;
+    /* כוכב כבוי ברירת מחדל */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    line-height: 1;
+    user-select: none;
+}
+
+/* אפקט Hover (ריחוף) דינמי */
+.star-item:hover,
+.star-item:hover~.star-item {
+    color: #f6d365;
+    transform: scale(1.15);
+}
+
+/* שמירת המצב הנבחר על בסיס קוד ה-JavaScript (קלאס active) */
+.star-item.active,
+.star-item.active~.star-item {
+    color: #f5a623;
+}
+
+.footer {
+    background-color: #3d2817;
+    color: #ffffff;
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MEDIA QUERIES (RESPONSIVE) - עודכן לתפריט המבורגר נפתח */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        /* מציג את כפתור ה-3 פסים בנייד */
+    }
+
+    .nav-wrapper {
+        justify-content: space-between;
+        padding: 0.75rem 1.5rem;
+    }
+
+    /* הפיכת תפריט הניווט למסך מלא/נפתח בנייד */
+    .nav {
+        position: fixed;
+        top: 110px;
+        /* מתחיל בדיוק מתחת לגובה הלוגו */
+        right: -100%;
+        /* מוסתר מחוץ למסך כברירת מחדל */
+        width: 100%;
+        height: calc(100vh - 110px);
+        background-color: #ffffff;
+        flex-direction: column;
+        gap: 0rem;
+        margin: 0;
+        padding: 2rem 0;
+        transition: right 0.4s ease;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* כשהתפריט מקבל קלאס active מה-JS הוא מחליק פנימה */
+    .nav.active {
+        right: 0;
+    }
+
+    .user-greeting {
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #e0d8d0;
+    }
+
+    .nav-link {
+        padding: 1.2rem 0;
+        border-bottom: 1px solid #e0d8d0;
+        width: 80%;
+        text-align: center;
+    }
+
+    .nav-link::after {
+        display: none;
+        /* מוריד את הפס התחתון בריחוף בנייד לחוויה נקייה */
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-form {
+        max-width: 100%;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .logo-img {
+        height: 75px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .hero {
+        min-height: 400px;
+        padding: 1.5rem 0.75rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-tagline {
+        font-size: 1/1rem;
+    }
+
+    .section-title,
+    .category-title {
+        font-size: 1.6rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .menu-item {
+        padding: 1.5rem;
+    }
+
+    .item-name,
+    .item-price {
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .contact-form h3,
+    .contact-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .hours-list li {
+        font-size: 0.9rem;
+    }
+}
+
+/* OVERLAYS & USER SYSTEM */
+.hidden {
+    display: none !important;
+}
+
+.app-hidden {
+    filter: blur(0.5px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.login-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 2000;
+}
+
+.login-box {
+    background: #fff;
+    padding: 2rem;
+    width: 360px;
+    max-width: calc(100% - 32px);
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    direction: rtl;
+}
+
+.login-box h2 {
+    margin-bottom: 1.5rem;
+    color: #3d2817;
+}
+
+.login-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.6rem;
+}
+
+.login-actions .btn {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+}
+
+.login-message {
+    margin-top: 0.8rem;
+    min-height: 1.2rem;
+}
+
+.login-message.error {
+    color: #a94442;
+}
+
+.login-message.success {
+    color: #155724;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-align: right;
+    font-size: 0.9rem;
+    margin-top: -0.4rem;
+    margin-bottom: 1rem;
+}
+
+.remember input {
+    width: auto;
+    margin-bottom: 0;
+}
+
+.login-logo {
+    display: block;
+    margin: 0 auto 0.6rem;
+    width: 84px;
+    height: auto;
+}
+
+/* REVIEWS LIST DISPLAY */
+.reviews-list {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review-item {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.review-header {
+    font-size: 0.95rem;
+    color: #2c2416;
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.review-stars {
+    color: #f5a623;
+    font-size: 1rem;
+}
+
+.review-time {
+    color: #888;
+    font-size: 0.8rem;
+    margin-left: 0.6rem;
+}
+
+.review-body {
+    margin-top: 0.6rem;
+    color: #333;
+    white-space: pre-wrap;
+}
+
+.muted {
+    color: #666;
+}
+
+/* STARS SYSTEM (OUTPUT - FOR EXISTING REVIEWS) */
+.stars {
+    display: inline-flex;
+    gap: 6px;
+    margin-inline: 8px;
+    align-items: center;
+}
+
+.star {
+    --fill: 0%;
+    --color: #f5a623;
+    font-size: 1.05rem;
+    line-height: 1;
+    display: inline-block;
+    background: linear-gradient(90deg, var(--color) var(--fill), #ddd var(--fill));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.star.jump {
+    transform: translateY(-6px);
+}

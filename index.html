@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="שבע שוקו - קפהיה חמה ומעוננת בעמוד קפה ושוקולד איכותי">
+    <title>שבע שוקו | קפה עם זיכרון </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="login-overlay" class="login-overlay" aria-hidden="false">
+        <div class="login-box">
+            <img src="shevashoko-removebg-preview (1).png" alt="לוגו שבע שוקו" class="login-logo">
+            <h2>התחברות</h2>
+            <form id="loginForm">
+                <input type="text" id="login-username" placeholder="שם משתמש" required>
+                <input type="password" id="login-password" placeholder="סיסמה" required>
+                <label class="remember"><input type="checkbox" id="rememberMe"> זכור אותי</label>
+                <div class="login-actions">
+                    <button type="submit" class="btn">התחבר</button>
+                    <button type="button" id="showSignup" class="btn">צור חשבון</button>
+                </div>
+            </form>
+
+            <form id="signupForm" class="hidden">
+                <h3>הרשמה</h3>
+                <input type="text" id="signup-username" placeholder="שם משתמש" required>
+                <input type="password" id="signup-password" placeholder="סיסמה" required>
+                <div class="login-actions">
+                    <button type="submit" class="btn">הרשם</button>
+                    <button type="button" id="showLogin" class="btn">ביטול</button>
+                </div>
+            </form>
+
+            <div id="loginMessage" class="login-message"></div>
+        </div>
+    </div>
+
+    <div id="app" class="app-hidden">
+        <header class="header">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <img src="shevashoko-removebg-preview (1).png" alt="שבע שוקו לוגו" class="logo-img">
+                    </div>
+
+                    <button class="menu-toggle" id="menuToggle" aria-label="פתח תפריט">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <nav class="nav" id="nav">
+                        <a href="#home" class="nav-link">בית</a>
+                        <a href="#menu" class="nav-link">תפריט</a>
+                        <a href="#about" class="nav-link">אודות</a>
+                        <a href="#contact" class="nav-link">יצירת קשר</a>
+                        <a href="#reviews" class="nav-link">ביקורות</a>
+
+                        <div id="userGreeting" class="user-greeting hidden" aria-live="polite">
+                            <span>שלום, <strong id="userNameDisplay"></strong></span>
+                            <button id="logoutBtn" class="btn logout-btn">התנתק</button>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">שבע שוקו</h1>
+                <p class="hero-tagline">קפה עם זיכרון</p>
+                <a href="#menu" class="btn btn-primary">תפריט המוצרים</a>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2 class="section-title">התפריט שלנו</h2>
+
+                <div class="menu-category">
+                    <h3 class="category-title">קרואסונים</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <h4 class="item-name">הקרואסון של אלקנה</h4>
+                            <p class="item-description">קרואסון במילוי שוקולד לזכרו של אלקנה נבון הי"ד</p>
+                            <p class="item-price">₪13</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">הקרואסון של אור</h4>
+                            <p class="item-description">קרואסון במילוי שקדים לזכרו של אור אסתו הי"ד</p>
+                            <p class="item-price">₪14</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">הקרואסון של שי</h4>
+                            <p class="item-description">קרואסון גבינה לזכרה של שי אשרם הי"ד</p>
+                            <p class="item-price">₪13</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">הקרואסון של ישי</h4>
+                            <p class="item-description">קרואסון פפיון במילוי תותים וריקוטה לזכרו של ישי גרינבאום הי"ד
+                            </p>
+                            <p class="item-price">₪16</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">הקרואסון של ליאל</h4>
+                            <p class="item-description">סינבון ספירלה לזכרו של ליאל שוהם הי"ד</p>
+                            <p class="item-price">₪15</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3 class="category-title">הקינוחים שלנו</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <h4 class="item-name">הסופלה של עדי</h4>
+                            <p class="item-description">סופלה שוקולד לזכרו של עדי דנן הי"ד</p>
+                            <p class="item-price">₪16</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">עוגת הגבינה של עמית</h4>
+                            <p class="item-description">עוגת גבינה לזכרו של עמית לוי הי"ד</p>
+                            <p class="item-price">₪17</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">השוקולדים של ריף</h4>
+                            <p class="item-description">קינוח שלושה שוקולדים לזכרו של ריף הרוש הי"ד</p>
+                            <p class="item-price">₪16</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">הפאי של הדר</h4>
+                            <p class="item-description">פאי לימון לזכרה של הדר כהן הי"ד</p>
+                            <p class="item-price">₪20</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">העוגיות של אוריאל</h4>
+                            <p class="item-description">עוגיות שוקולד צ'יפס לזכרו של אוריאל אביעד סילברמן הי"ד</p>
+                            <p class="item-price">₪9</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">כדורי השוקולד של רז</h4>
+                            <p class="item-description">כדורי שוקולד לזכרה של רז מזרחי הי"ד</p>
+                            <p class="item-price">₪9</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">האלפחורס של אליעד</h4>
+                            <p class="item-description">עוגיות אלפחורס לזכרו של אליעד אוחיון הי"ד</p>
+                            <p class="item-price">₪9</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">הבראוניז של מרדכי</h4>
+                            <p class="item-description">בראוניז שוקולד לזכרו של מרדכי קדמון הי"ד</p>
+                            <p class="item-price">₪12</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">העוגיות של אביב</h4>
+                            <p class="item-description">עוגיות אמסטרדם לזכרה של אביב חג'ג' הי"ד</p>
+                            <p class="item-price">₪10</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">הפאדג' של עמית</h4>
+                            <p class="item-description">עוגת פאדג' קראנץ' טופי לזכרו של עמית כהן הי"ד</p>
+                            <p class="item-price">₪18</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3 class="category-title">שתייה</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <h4 class="item-name">קפה</h4>
+                            <p class="item-description">משקה קפה חם ואיכותי</p>
+                            <p class="item-price">₪10</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">שוקו</h4>
+                            <p class="item-description">שוקו חם ומפנק</p>
+                            <p class="item-price">₪10</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">אייס קפה</h4>
+                            <p class="item-description">משקה אייס קפה צונן</p>
+                            <p class="item-price">₪10</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">קולה</h4>
+                            <p class="item-description">קוקה קולה קלאסית</p>
+                            <p class="item-price">₪7</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">זירו</h4>
+                            <p class="item-description">קוקה קולה זירו</p>
+                            <p class="item-price">₪7</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">ברד</h4>
+                            <p class="item-description">משקה ברד מרענן</p>
+                            <p class="item-price">₪7</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="item-name">שתייה קלה</h4>
+                            <p class="item-description">מגוון משקאות קלים</p>
+                            <p class="item-price">₪6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">אודות שבע שוקו</h2>
+                <div class="about-content">
+                    <p>עגלת קפה לזכר מרדכי אמויאל תושב לוד שנפל בלבנון במלחמת חרבות ברזל.</p>
+                    <p>מרדכי היה יושב עם ילדיו כל יום בשבע בבוקר ללימוד יומי עם כוס שוקו, לאחר נפילתו החלטנו לעשות
+                        פרוייקט להנצחתו שיעביר את השמחה, את החיבור לתורה ולזמן המשפחה שהיה בראש מעייניו.</p>
+                    <p>אנחנו צוות נחשון לוד נצח פתחנו את הפרוייקט הבא הנקרא שבע שוקו לזכרו☕️</p>
+                    <p>זאת עגלת קפה הנמצאת בהרצל 36 לוד, בעגלה ימכרו קפה ומאפים שונים, והכול בתפריט לזכר חיילים שנפלו!
+                    </p>
+                    <p>עגלת הקפה תהיה פתוחה פעם בשבוע, בימי שישי מוזמנים להגיע,</p>
+                    <p>לחוות. להנות. ולזכור</p>
+                    <p>מחכים לכם בהרצל 36 לוד, נחשונצח🫶🏻</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">יצירת קשר ושעות פתיחה</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>שעות פתיחה</h3>
+                        <ul class="hours-list">
+                            <li><strong>שישי:</strong> 09:00 - 13:00</li>
+                        </ul>
+
+                        <h3>צור קשר</h3>
+                        <div class="contact-details">
+                            <p><strong>כתובת:</strong> רחוב הרצל 36, לוד</p>
+                            <p><strong>טלפון:</strong> <a href="tel:+0508568878">050-856-8878</a></p>
+                            <p><strong>דוא"ל:</strong> <a href="mailto:sevashoko@gmail.com">sevashoko@gmail.com</a></p>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/sheva_shoko/?hl=he" class="social-icon"
+                                title="Instagram">
+                                <img src="logoinstegram.png" alt="Instagram">
+                            </a>
+                            <a href="https://www.facebook.com/61582652021792/" class="social-icon"
+                                title="Facebook">f</a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <h3>השאירו ביקורת על המקום</h3>
+                        <div class="form-group">
+                            <label>דרגו את המקום:</label>
+                            <div class="stars-rating">
+                                <span class="star-item" data-value="1">★</span>
+                                <span class="star-item" data-value="2">★</span>
+                                <span class="star-item" data-value="3">★</span>
+                                <span class="star-item" data-value="4">★</span>
+                                <span class="star-item" data-value="5">★</span>
+                            </div>
+                            <input type="hidden" id="rating" name="rating" value="" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="כתוב כאן את הביקורת שלך" rows="5"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">שלח ביקורת</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <div class="container">
+                <h2 class="section-title">ביקורות על המקום</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <p>קראו מה אורחינו חושבים והשאירו ביקורת כנה על החוויה.</p>
+                    </div>
+                    <div id="reviewsList" class="reviews-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; שבע שוקו. כל הזכויות שמורות.</p>
+                    <p>שבע שוקו - קפה עם זיכרון</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
