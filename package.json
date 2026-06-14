@@ -1,17 +1,13 @@
 {
-    "name": "sheva_shoko",
-    "version": "1.0.0",
-    "description": "",
-    "main": "script.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
-   "dependencies": {
+  "name": "sheva-shoko-new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
     "express": "^4.19.2",
-    "better-sqlite3": "^11.0.0"
+    "sqlite3": "5.1.7"
   }
 }
